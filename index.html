@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="MyApp">
+<head>
+   <meta charset="UTF-8">
+   <title>AngularJS</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+  	<script src="app.js"></script>
+</head>
+<body>
+   <div ng-controller="questionController">
+      <h1>Pregunta {{pregunta.id}}</h1>
+      <div class="pregunta">
+         <h3>{{pregunta.premisa}}</h3>
+         <ul>
+            <li ng-repeat="respuesta in pregunta.respuestas" ng-click="marcar()">
+               {{respuesta.text}}
+            </li>
+         </ul>
+      </div>
+      <button ng-click="responder()">Responder</button>
+   </div>
+</body>
+</html>
+
