@@ -1,5 +1,5 @@
 var app = angular.module('MyApp', []);
-app.controller('questionController', function($scope){
+app.controller('preguntasController', function($scope){
    //objeto pregunta
    $scope.pregunta = {
       id: 1,
