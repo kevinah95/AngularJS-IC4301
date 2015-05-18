@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Las 3 tags 'meta' de arriba son necesarias para el diseño web adaptable proporcionado por bootstrap -->
+    <title>Introducción a Angular</title>
+    <!-- ==========Bootstrap========== -->
+    <!-- Compilación minimizada del CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="css/index.css"> -->
+    <!-- jQuery (necesario para Script de Bootstrap) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Script de Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- ==========Angular========== -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+</head>
+
+<body>
+    <!-- Incluir todos los objetos DOM de la aplicación -->
+    <div class="col-md-4"></div>
+    <div class="col-md-4" >
+        <div class="row panel" >
+            <h2 class="text-center">Mascota Nombre</h2>
+            <h4 class="text-center"><small>Mascota Raza</small></h4>
+            <img class="img-circle center-block" src="http://placehold.it/200x200" width="180" height="180" alt="">
+            <br>
+            <section>
+                <!-- init -->
+                <ul class="nav nav-pills">
+                    <li ><a href >Descripción</a></li>
+                    <!-- li>active || a>ng-click -->
+                    <li ><a href >Salud</a></li>
+                    <li ><a href >Calificaciones</a></li>
+                </ul>
+            </section>
+            <div class="panel" >
+                <h4>Descripción</h4>
+                <p>Mascota Descripción</p>
+            </div>
+            <div class="panel" >
+                <h4>Salud</h4>
+                <p><b>Veterinario:</b> Mascota Veterinario</p>
+                <p><b>Nivel de Energía:</b> Mascota Energía</p>
+            </div>
+            <div class="panel" >
+                <h4>Calificaciones</h4>
+                <blockquote>
+                    <b>Estrellas: Nivel de estrellas</b> Cuerpo de Calificación
+                    <br>
+                    <small>por: Autor</small>
+                </blockquote>
+                <div >
+                    <button class="btn btn-warning btn-sm pull-right" >Calificar</button>
+                    <!-- Formulario Calificacion -->
+                    <form>
+                        <blockquote>
+                            <b>Estrellas: Nivel de Estrellas</b> Cuerpo de Calificación
+                            <small>por: Autor</small>
+                        </blockquote>
+                        <br>
+                        <select class="form-control">
+                            <option value="1">1 estrella</option>
+                            <option value="2">2 estrellas</option>
+                            <option value="3">3 estrellas</option>
+                            <option value="4">4 estrellas</option>
+                            <option value="5">5 estrellas</option>
+                        </select>
+                        <br>
+                        <textarea class="form-control" placeholder="Descripcion"></textarea>
+                        <br>
+                        <input type="email" class="form-control" placeholder="Autor" />
+                        <br>
+                        <input type="submit" class="btn btn-success btn-sm" value="Submit" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- A partir de aquí incluir los scripts externos de la Aplicación -->
+    <!-- <script type="text/javascript" src="app.js"></script> -->
+</body>
+
+</html>
