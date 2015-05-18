@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Las 3 tags 'meta' de arriba son necesarias para el diseño web adaptable proporcionado por bootstrap -->
+    <title>Introducción a Angular</title>
+    <!-- ==========Bootstrap========== -->
+    <!-- Compilación minimizada del CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Un poco de estilo -->
+    <!-- jQuery (necesario para Script de Bootstrap) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Script de Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- ==========Angular========== -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+</head>
+
+<body>
+    <!-- Incluir todos los objetos DOM de la aplicación -->
+    <div class="col-md-4"></div>
+    <div class="col-md-4" ng-controller="mascotasCtrl as mCtrl">
+        <div class="row panel" ng-repeat="mascota in mCtrl.mascotas">
+            <h2 class="text-center">{{mascota.nombre}}</h2>
+            <h4 class="text-center"><small>{{mascota.raza}}</small></h4>
+            <img class="img-circle center-block" ng-src="{{mascota.imagen}}" width="180" height="180" alt="">
+            <br>
+            <section ng-init="tab = 1">
+                <!-- init -->
+                <ul class="nav nav-pills">
+                    <li ng-class="{active: tab === 1}"><a href ng-click="tab = 1">Descripción</a></li>
+                    <!-- li>active || a>ng-click -->
+                    <li ng-class="{active: tab === 2}"><a href ng-click="tab = 2">Salud</a></li>
+                    <li ng-class="{active: tab === 3}"><a href ng-click="tab = 3">Calificaciones</a></li>
+                </ul>
+            </section>
+            <div class="panel" ng-show="tab === 1">
+                <h4>Descripción</h4>
+                <p>{{mascota.descripcion}}</p>
+            </div>
+            <div class="panel" ng-show="tab === 2">
+                <h4>Salud</h4>
+                <p><b>Veterinario:</b>{{mascota.salud.veterinario}}</p>
+                <p><b>Nivel de Energía:</b> {{mascota.salud.energia}}</p>
+            </div>
+            <div class="panel" ng-show="tab === 3">
+                <h4>Calificaciones</h4>
+                <blockquote ng-repeat="calificacion in mascota.calificaciones">
+                    <b>Estrellas: {{calificacion.estrellas}}</b> {{calificacion.cuerpo}}
+                    <br>
+                    <small>por: {{calificacion.autor}}</small>
+                </blockquote>
+                <div ng-controller="calificacionController as cCtrl">
+                    <button class="btn btn-warning btn-sm pull-right" ng-click="calificar = !calificar">Calificar</button>
+                    <form ng-show="calificar" name="formCalificar" ng-submit="formCalificar.$valid && cCtrl.agregarCalificacion(mascota)" novalidate>
+            <!--El atributo NOVALIDATE valida el formulario hasta que los campos con el atributo required sean validos-->
+            <!--El atributo nombre_formulario.$valid verifica el estado del formulario -->
+                        <blockquote>
+                            <b>Estrellas: {{cCtrl.estrellas}}</b> {{cCtrl.cuerpo}}
+                            <small>por: {{cCtrl.autor}}</small>
+                        </blockquote>
+                        <br>
+                        <select class="form-control" ng-model="cCtrl.calificacion.estrellas" required>
+                            <option value="1">1 estrella</option>
+                            <option value="2">2 estrellas</option>
+                            <option value="3">3 estrellas</option>
+                            <option value="4">4 estrellas</option>
+                            <option value="5">5 estrellas</option>
+                        </select>
+                        <br>
+                        <textarea class="form-control" placeholder="Descripcion" ng-model="cCtrl.calificacion.descripcion" required></textarea>
+                        <br>
+                        <input type="email" class="form-control" placeholder="Autor" ng-model="cCtrl.calificacion.autor" required>
+                        <br>
+                        <input type="submit" class="btn btn-success btn-sm" ng-disabled="formCalificar.$invalid" value="Submit" />
+                        <!-- Se deshabilita el boton si el formCalificar es invalido -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- A partir de aquí incluir los scripts externos de la Aplicación -->
+    <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
