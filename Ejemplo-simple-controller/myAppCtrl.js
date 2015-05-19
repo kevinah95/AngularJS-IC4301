@@ -38,6 +38,7 @@ app.controller('preguntasController', function($scope){
          if (respuesta.active)
             $scope.respuestas.push({ id:$scope.id, key:respuesta.id });
       });
+      alert("Dato Guardado");
     };
 
 });
